@@ -1,0 +1,145 @@
+
+<!doctype html>
+<html>
+<head>
+<script>
+/*
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53684223-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+*/
+</script>
+<meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width,user-scalable=no"/>
+
+<title>炫鬥之王-暴走小遊戲</title>
+<meta name='robots' content='noindex,follow' />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<style>
+    html, body { background-color:#000000;margin:0; padding:0;width:100%;height:100%; text-align: center}
+    #loadicon{margin-top: 250px; }
+
+    #orient{margin-top:50px;}
+    p{color:#FFFFFF; font-size: 24}
+</style>
+<link rel="stylesheet" type="text/css" href="css/game9g.css">
+
+<script src="js/Base64Images.js"></script>
+</head>
+
+<body  onload="complete();">
+
+<div  class="orient"  id="orient"  style="display: none;"><p>請在豎屏情況下使用</p></div>
+<div id="loadicon"><img id="img1"/><br/><img id="img2"/><br/><img id="img3"/></div>
+<canvas id="gameCanvas" width="445" height="700"></canvas> 
+<script>
+  if(typeof(pgvMain) == 'function') pgvMain();
+    //橫屏提示
+
+    function orientationChange(){
+        if(window.orientation==90||window.orientation==-90){
+            document.getElementById("gameCanvas").style.display="none"
+            document.getElementById("orient").style.display="block"
+        }else{
+             document.getElementById("gameCanvas").style.display="block"
+            document.getElementById("orient").style.display="none"
+        }
+    }
+    orientationChange();
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false);
+
+    function trace(v){
+      //console.log(v)
+    }
+ var ccConfig={
+        "debugMode" : 0,
+        "showFPS" : false,
+        "frameRate" : 60,
+        "id" : "gameCanvas",
+        "renderMode" : 1,
+        "engineDir":"./",
+        "modules" : ["cocos2d"],
+        "jsList" : [
+        ]
+    }
+document["ccConfig"]=ccConfig;
+//document.getElementById("img1").src=cc._loaderImage;
+document.getElementById("img2").src=cc._loadingImage;
+document.getElementById("img3").src=cc.tgideasLogo;
+var GD={}
+GD.GETNUM=0;
+ GD.SCORE=0;
+GD.MAXHITUM=0;
+GD.COMMENT="好厲害";
+GD.MAXTIME=60;
+GD.SOUND = false;
+GD.USETIME=0;
+function complete(){
+    orientationChange();
+    document.getElementById("loadicon").style.display="none";
+    cc.game.run();
+     
+}
+</script>
+ <script src="js/resource2.js"></script>
+<script src="js/cocos2dtgme2.js"></script>
+ <script src="js/app2.js"></script>
+<script>
+    h5WxData = {
+        title: "我就是秩序，與敵軍奮戰"+GD.USETIME+"秒獲得"+GD.SCORE+"分，不服來戰！",
+        desc: "炫鬥之王，體驗左右暴打的超快感",
+        score: 0,
+        increase: true  //得分越高越厲害則為true，否則為false
+    }
+
+    var isGameOverCalled = false;
+    function h5GameOver(){
+        h5WxData.score = GD.SCORE;
+        h5WxData.title = "我就是秩序，與敵軍奮戰"+GD.USETIME+"秒獲得"+GD.SCORE+"分，不服來戰！";
+        var str = GD.SCORE;
+		dp_submitScore(GD.SCORE);
+        if(!isGameOverCalled){
+            isGameOverCalled = true;
+           // h5AfterGameOver();
+        }
+    }
+</script>
+<script language=javascript>
+
+
+		function goHome(){
+			window.location="http://game.ioxapp.com/";
+		}
+		function clickMore(){
+
+			 	goHome();
+			  
+		}
+		function dp_share(){
+			window.location="https://www.facebook.com/rageminigame";
+		}
+		function dp_Ranking(){
+			window.location="http://game.ioxapp.com/";
+		}
+
+		function showAd(){
+		}
+		function hideAd(){
+		}
+		function dp_submitScore(score){
+
+			
+		}
+	</script>
+
+</body>
+</html>
+
